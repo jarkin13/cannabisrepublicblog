@@ -16,6 +16,8 @@ require_once( trailingslashit( get_stylesheet_directory() ) . 'inc/navigation.ph
 // Only the bare minimum to get the theme up and running
 function voidx_setup() {
 
+  add_theme_support( 'post-thumbnails' ); 
+
   // HTML5 support; mainly here to get rid of some nasty default styling that WordPress used to inject
   add_theme_support( 'html5', array( 'search-form', 'gallery' ) );
 
@@ -50,3 +52,14 @@ function voidx_widgets_init() {
 add_action( 'widgets_init', 'voidx_widgets_init' );
 
 
+if( function_exists('acf_add_options_page') ) {
+  
+  acf_add_options_page(array(
+    'page_title'  => 'Theme General Settings',
+    'menu_title'  => 'Theme Settings',
+    'menu_slug'   => 'theme-general-settings',
+    'capability'  => 'edit_posts',
+    'redirect'    => false
+  ));
+
+}

@@ -7,7 +7,7 @@
       button    = document.getElementById('responsive-menu-toggle');
 
   // Early exit if we're missing anything essential
-  if (!nav || typeof button === 'undefined') {
+ /*if (!nav || typeof button === 'undefined') {
     return;
   }
 
@@ -26,5 +26,5 @@
       nav.style.display = 'block';
       button.className += ' active';
     }
-  };
+  };*/
 } )();

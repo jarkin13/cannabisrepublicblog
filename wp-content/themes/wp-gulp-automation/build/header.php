@@ -13,37 +13,17 @@
 <body <?php body_class(); ?> data-spy="scroll" data-target=".navbar" data-offset="0">
 <?php echo wp_title(); ?>
   <div id="page" class="hfeed site">
-    <header>
-      <div class="navbar-wrapper">
-        <div class="container">
-          <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#home"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png"></a>
-              </div>
-              <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#ourStory">Our Story</a></li>
-                  <li><a href="#details">Details</a></li>
-                  <li><a href="#accomodations">Accomodations</a></li>
-                  <li><a href="#sights">Sights</a></li>
-                  <li><a href="#registry">Registry</a></li>
-                  <li><a href="#weddingParty">Wedding Party</a></li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </div>
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<?php echo get_home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="California Cannabis CPA"></a>
+        <?php wp_nav_menu( array('menu' => 'header', 'container_class' => 'collapse navbar-collapse', 'menu_class' => 'nav navbar-nav navbar-right', 'container_id' => 'navbar') ); ?>
       </div>
-      <section id="home" class="intro-section vertical-center">
-        <div class="section-text">
-          <img src="<?php echo get_template_directory_uri(); ?>/images/header-text.jpg">
-        </div>
-      </section>
-    </header>
+    </nav>
+  </header>
