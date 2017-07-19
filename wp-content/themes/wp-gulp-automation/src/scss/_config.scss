@@ -1,0 +1,54 @@
+// ==== CONFIGURATION ==== //
+
+// Set all your configuration variables here!
+
+// Width of the overall site as well as the left and right content columns
+$width-site:    1000px;
+$width-left:    650px;
+$width-right:   350px;
+
+// Breakpoints
+$break-small:   480px;
+$break-medium:  620px;
+$break-large:   800px;
+
+// A standard margin
+$spacer:        30px;
+
+// Section spacing
+@mixin section-padding($spacing) {
+  padding: $spacing/2 + px 0;
+}
+
+@mixin item-spacing($top, $bottom, $type) {
+  @if $type == 'margin' {
+    margin-top: $top;
+    margin-bottom: $bottom;
+  } @else {
+    padding-top: $top;
+    padding-bottom: $bottom;
+  }
+}
+
+
+// A modest palette; see `_library.scss` for the color() function
+$_color: (
+  text: #333,
+  link: steelblue,
+  link-muted: steelblue,
+  body-background: white
+);
+
+// Metadata; use metadata() to access
+$_metadata: (
+  theme-name:               "Nelsacco"
+, theme-author:             "Jamie Arkin"
+, theme-author-uri:         "http://jamiearkin.com"
+, theme-description:        "A minimally viable theme made with the WordPress/Gulp starter kit"
+, theme-version:            "0.3.1"
+, theme-license:            "GPLv3"
+, theme-license-uri:        "http://www.gnu.org/licenses/gpl.txt"
+, theme-tags:               (light, responsive-layout, right-sidebar, starter-theme, two-columns, translation-ready, white)
+, theme-text-domain:        "Nelsacco"
+, theme-text-domain-path:   "/languages/"
+);

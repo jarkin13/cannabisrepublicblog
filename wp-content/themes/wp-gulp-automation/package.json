@@ -1,0 +1,43 @@
+{
+  "name": "gulp-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "postinstall": "mv node_modules/normalize.css/normalize.css node_modules/normalize.css/_normalize.scss"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-sass": "^3.3.7",
+    "browser-sync": "^2.18.12",
+    "cssnano": "^3.10.0",
+    "del": "^2.2.2",
+    "foundation-sites": "^6.3.1",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "html5-history-api": "^4.2.8",
+    "jshint": "^2.9.4",
+    "json-file": "^0.1.0",
+    "merge-stream": "^1.0.1",
+    "normalize-scss": "^7.0.0",
+    "normalize.css": "^7.0.0",
+    "require-dir": "^0.3.1",
+    "scut": "^1.4.0",
+    "spin.js": "^2.3.2",
+    "timeago": "^1.5.4",
+    "wp-ajax-page-loader": "^0.3.0"
+  },
+  "themeName": "cccpa"
+}

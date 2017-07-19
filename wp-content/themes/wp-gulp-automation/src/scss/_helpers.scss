@@ -1,0 +1,48 @@
+// ==== HELPERS ==== //
+
+%center {
+  @include scut-center-block;
+}
+%clearfix {
+  @include scut-clearfix;
+}
+%hide {
+  @include scut-hide-visually;
+}
+%spacer-above {
+  margin-top: spacer();
+}
+%spacer-above-2 {
+  margin-top: spacer(2);
+}
+%spacer-above-3 {
+  margin-top: spacer(3);
+}
+%spacer-below {
+  margin-bottom: spacer();
+}
+%spacer-below-2 {
+  margin-bottom: spacer(2);
+}
+%spacer-below-3 {
+  margin-bottom: spacer(3);
+}
+%vertical-center {
+  min-height: 100%;  /* Fallback for vh unit */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+  -webkit-box-align : center;
+  -webkit-align-items : center;
+  -moz-box-align : center;
+  -ms-flex-align : center;
+  align-items : center;
+  width: 100%;    
+  -webkit-box-pack : center;
+  -moz-box-pack : center;
+  -ms-flex-pack : center;
+  -webkit-justify-content : center;
+  justify-content : center;
+}
