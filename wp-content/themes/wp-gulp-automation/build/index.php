@@ -1,8 +1,8 @@
 <?php get_header(); ?>
-  <div class="container">
+  <div class="container sections">
 
     <!-- FEATURED POST -->
-    <div class="row">
+    <div class="row featured">
       <?php 
       if( get_field('featured_post', 'option') ) : 
         $featuredPost = get_field('featured_post', 'option');
@@ -10,13 +10,13 @@
         $id = wp_get_recent_posts( array( 'numberposts' => 1 ) )[0]['ID'];
         $featuredPost = get_post( $id );
       endif; ?>
-      <div class="col-md-5">
-        <h1><a href="<?php echo $featuredPost->guid ?>" title="<?php echo $featuredPost->post_title; ?>"><?php echo $featuredPost->post_title; ?></a></h1>
+      <div class="col-md-4 text">
         <h2 class="category large"><?php echo get_the_category( $featuredPost->ID )[0]->name; ?></h2>
+        <h1><a href="<?php echo $featuredPost->guid ?>" title="<?php echo $featuredPost->post_title; ?>"><?php echo $featuredPost->post_title; ?></a></h1>
         <p><?php echo get_the_excerpt( $featuredPost->ID ); ?></p>
         <a href="<?php echo $featuredPost->guid ?>" role="button" class="btn btn-primary">Read More</a>
       </div>
-      <div class="col-md-7">
+      <div class="col-md-7 pull-right image">
         <a href="<?php echo $featuredPost->guid ?>" title="<?php echo $featuredPost->post_title; ?>"><img src="<?php echo get_the_post_thumbnail_url( $featuredPost->ID ) ?>" alt="<?php echo $featuredPost->post_title; ?>"></a>
       </div>
     </div>
@@ -34,10 +34,9 @@
         <div class="col-sm-4">
           <a href="<?php echo $threePost['guid']; ?>" title="<?php echo $threePost['post_title']; ?>">
             <img src="<?php echo get_the_post_thumbnail_url( $threePost['ID'] ) ?>" alt="<?php echo $threePost['post_title']; ?>">
+            <h2 class="category"><?php echo get_the_category( $threePost['ID'] )[0]->name; ?></h2>
             <h1 class="small"><?php echo $threePost['post_title']; ?></h1>
           </a>
-          <h2 class="category"><?php echo get_the_category( $threePost['ID'] )[0]->name; ?></h2>
-          <p><?php echo get_the_excerpt( $threePost['ID'] ); ?></p>
           <?php $excludePostsIDs .= ', ' . $threePost['ID']; ?>
         </div>
       <?php endforeach ?>
@@ -55,10 +54,9 @@
         <div class="col-sm-6">
           <a href="<?php echo $twoPosts['guid']; ?>" title="<?php echo $twoPost['post_title']; ?>">
             <img src="<?php echo get_the_post_thumbnail_url( $twoPost['ID'] ) ?>" alt="<?php echo $twoPost['post_title']; ?>">
+            <h2 class="category medium"><?php echo get_the_category( $twoPost['ID'] )[0]->name; ?></h2>
             <h1 class="medium"><?php echo $twoPost['post_title']; ?></h1>
           </a>
-          <h2 class="category medium"><?php echo get_the_category( $twoPost['ID'] )[0]->name; ?></h2>
-          <p><?php echo get_the_excerpt( $twoPost['ID'] ); ?></p>
           <?php $excludePostsIDs .= ', ' . $twoPost['ID']; ?>
         </div>
       <?php endforeach; ?>
