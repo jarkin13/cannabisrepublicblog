@@ -7,11 +7,9 @@
 function voidx_assets_header() {
 
   wp_enqueue_script('jquery-js', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', false);
-  
   // Header script loading is simplistic in this starter kit but you may want to change what file is loaded based on various conditions; check out the footer asset loader for an example
   $file = 'header.min';
-  wp_enqueue_script( 'nelsacco-header', get_stylesheet_directory_uri() . '/js/' . $file . '.js', false );
-  wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false);
+  wp_enqueue_script( 'header', get_stylesheet_directory_uri() . '/js/' . $file . '.js', false );
 
   // Register and enqueue our main stylesheet with versioning based on last modified time
   wp_register_style( 'voidx-style', get_stylesheet_uri(), $dependencies = array(), filemtime( get_template_directory() . '/style.css' ) );
@@ -58,9 +56,10 @@ function voidx_assets_footer() {
   if ( $file === 'x' )
     $file = 'footer.min';
 
+  wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', $deps = array(), filemtime( get_template_directory() . '/js/' . $file . '.js' ), true);
   // Load theme-specific JavaScript bundles with versioning based on last modified time; http://www.ericmmartin.com/5-tips-for-using-jquery-with-wordpress/
   // The handle is the same for each bundle since we're only loading one script; if you load others be sure to provide a new handle
-  wp_enqueue_script( $name, get_stylesheet_directory_uri() . '/js/' . $file . '.js', true ); // This last `true` is what loads the script in the footer
+  wp_enqueue_script( $name, get_stylesheet_directory_uri() . '/js/' . $file . '.js', $deps = array(), filemtime( get_template_directory() . '/js/' . $file . '.js' ), true ); // This last `true` is what loads the script in the footer
 
   // Pass variables to scripts at runtime; must be triggered after the script is enqueued; see: http://codex.wordpress.org/Function_Reference/wp_localize_script
   if ( !empty( $vars ) ) {
@@ -68,7 +67,7 @@ function voidx_assets_footer() {
       wp_localize_script( $name, $var, $data );
   }
 }
-add_action( 'wp_enqueue_scripts', 'voidx_assets_footer' );
+add_action( 'wp_enqueue_scripts', 'voidx_assets_footer', 99 );
 
 
 

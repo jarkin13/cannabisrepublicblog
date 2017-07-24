@@ -1,12 +1,47 @@
 header {
   .navbar {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-size: 12px;
+    padding-top: 20px;
+    margin-bottom: 40px;
 
     .navbar-brand {
       height: auto;
+
+      img {
+        width: 150px;
+      }
+    }
+
+    ul {
+      padding: 10px 0;
+
+      li {
+
+        &:hover,
+        a:hover {
+          background-color: transparent;
+        }
+      }
+
+      li:last-child {
+        color: #fff;
+        background: $green;
+        margin-left: 15px;
+
+        a {
+          padding-right: 25px;
+          padding-left: 25px;
+        }
+
+        &:hover,
+        a:hover {
+          color: #fff;
+          background: $lt_green;
+        }
+      }
     }
   }
 }

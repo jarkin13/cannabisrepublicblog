@@ -1,6 +1,5 @@
 <?php get_header(); ?>
   <div class="container sections">
-
     <!-- FEATURED POST -->
     <div class="row featured">
       <?php 
@@ -10,87 +9,97 @@
         $id = wp_get_recent_posts( array( 'numberposts' => 1 ) )[0]['ID'];
         $featuredPost = get_post( $id );
       endif; ?>
-      <div class="col-md-4 text">
+      <div class="col-sm-3 col-md-4 text">
         <h2 class="category large"><?php echo get_the_category( $featuredPost->ID )[0]->name; ?></h2>
         <h1><a href="<?php echo $featuredPost->guid ?>" title="<?php echo $featuredPost->post_title; ?>"><?php echo $featuredPost->post_title; ?></a></h1>
         <p><?php echo get_the_excerpt( $featuredPost->ID ); ?></p>
         <a href="<?php echo $featuredPost->guid ?>" role="button" class="btn btn-primary">Read More</a>
       </div>
-      <div class="col-md-7 pull-right image">
+      <div class="col-sm-8 col-md-7 pull-right image">
         <a href="<?php echo $featuredPost->guid ?>" title="<?php echo $featuredPost->post_title; ?>"><img src="<?php echo get_the_post_thumbnail_url( $featuredPost->ID ) ?>" alt="<?php echo $featuredPost->post_title; ?>"></a>
+      </div>
+    </div>
+
+     <div class="row search-row">
+      <div class="col-sm-12">
+        <?php get_search_form(); ?>
       </div>
     </div>
 
     <!-- 3 POSTS -->
     <div class="row">
       <?php 
-      $excludePostsIDs = $featuredPost->ID;
-      $threePosts = wp_get_recent_posts( array(
-        'numberposts' => 3,
-        'exclude' => $featuredPost->ID
-      )); 
+        $excludePostsIDs = $featuredPost->ID;
+        $threePosts = wp_get_recent_posts( array(
+          'numberposts' => 3,
+          'exclude' => $featuredPost->ID
+        ));
+      ?>
 
-      foreach( $threePosts as $threePost ) : ?>
+      <?php foreach( $threePosts as $threePost ) : ?>
         <div class="col-sm-4">
           <a href="<?php echo $threePost['guid']; ?>" title="<?php echo $threePost['post_title']; ?>">
             <img src="<?php echo get_the_post_thumbnail_url( $threePost['ID'] ) ?>" alt="<?php echo $threePost['post_title']; ?>">
             <h2 class="category"><?php echo get_the_category( $threePost['ID'] )[0]->name; ?></h2>
             <h1 class="small"><?php echo $threePost['post_title']; ?></h1>
           </a>
-          <?php $excludePostsIDs .= ', ' . $threePost['ID']; ?>
         </div>
-      <?php endforeach ?>
+        <?php $excludePostsIDs .= ', ' . $threePost['ID']; ?>
+      <?php endforeach; ?>
     </div>
 
     <!-- TWO POSTS -->
     <div class="row">
       <?php 
-      $twoPosts = wp_get_recent_posts( array(
-        'numberposts' => 2,
-        'exclude' => $excludePostsIDs
-      )); 
+        $twoPosts = wp_get_recent_posts( array(
+          'numberposts' => 2,
+          'exclude' => $excludePostsIDs
+        )); 
+      ?>
 
-      foreach( $twoPosts as $twoPost ) : ?>
+      <?php foreach( $twoPosts as $twoPost ) : ?>
         <div class="col-sm-6">
-          <a href="<?php echo $twoPosts['guid']; ?>" title="<?php echo $twoPost['post_title']; ?>">
+          <a href="<?php echo $twoPost['guid']; ?>" title="<?php echo $twoPost['post_title']; ?>">
             <img src="<?php echo get_the_post_thumbnail_url( $twoPost['ID'] ) ?>" alt="<?php echo $twoPost['post_title']; ?>">
             <h2 class="category medium"><?php echo get_the_category( $twoPost['ID'] )[0]->name; ?></h2>
             <h1 class="medium"><?php echo $twoPost['post_title']; ?></h1>
           </a>
-          <?php $excludePostsIDs .= ', ' . $twoPost['ID']; ?>
         </div>
+        <?php $excludePostsIDs .= ', ' . $twoPost['ID']; ?>
       <?php endforeach; ?>
     </div>
 
-
     <!-- CATEGORY POSTS -->
-    <div class="row">
+    <div class="row cat-posts-row">
 
       <!-- Finances -->
       <div class="col-sm-6 col-md-4">
-        <div class="row">
+        <div class="row header">
           <div class="col-sm-12">
             <h2>Finances</h2>
             <hr/>
           </div>
         </div>
-        <?php 
-        $i = 0;
-        $posts = wp_get_recent_posts( array(
-          'numberposts' => 4,
-          'category' => 3, 
-          'exclude' => $excludePostsIDs
-        )); 
 
-        foreach( $posts as $post ) : ?> 
+        <?php 
+          $i = 0;
+          $posts = wp_get_recent_posts( array(
+            'numberposts' => 4,
+            'category' => 3, 
+            'exclude' => $excludePostsIDs
+          )); 
+        ?>
+
+        <?php foreach( $posts as $post ) : ?> 
           <?php $i++; ?>
           <?php if( $i == 1 ) : ?>
             <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
               <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
               <h3><?php echo $post['post_title']; ?></h3>
             </a>
+            <hr>
           <?php else : ?>
-            <div class="row">
+            <div class="row article">
               <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
                 <div class="col-sm-4">
                   <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
@@ -99,36 +108,40 @@
                   <h4><?php echo $post['post_title']; ?></h4>
                 </div>
               </a>
-            </div><br>
+            </div>
+            <hr>
           <?php endif; ?>
         <?php endforeach; ?>
-      </div>
+      </div><!-- close finance col -->
 
-      <!-- COMPLIANCE -->
+      <!-- Compliance -->
       <div class="col-sm-6 col-md-4">
-        <div class="row">
+        <div class="row header">
           <div class="col-sm-12">
             <h2>Compliance</h2>
             <hr/>
           </div>
         </div>
-        <?php 
-        $i = 0;
-        $posts = wp_get_recent_posts( array(
-          'numberposts' => 4,
-          'category' => 4, 
-          'exclude' => $excludePostsIDs
-        )); 
 
-        foreach( $posts as $post ) : ?> 
+        <?php 
+          $i = 0;
+          $posts = wp_get_recent_posts( array(
+            'numberposts' => 4,
+            'category' => 4, 
+            'exclude' => $excludePostsIDs
+          )); 
+        ?>
+
+        <?php foreach( $posts as $post ) : ?> 
           <?php $i++; ?>
           <?php if( $i == 1 ) : ?>
             <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
               <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
               <h3><?php echo $post['post_title']; ?></h3>
             </a>
+            <hr>
           <?php else : ?>
-            <div class="row">
+            <div class="row article">
               <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
                 <div class="col-sm-4">
                   <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
@@ -137,36 +150,40 @@
                   <h4><?php echo $post['post_title']; ?></h4>
                 </div>
               </a>
-            </div><br>
+            </div>
+            <hr>
           <?php endif; ?>
         <?php endforeach; ?>
-      </div>
+      </div><!-- close compliance col -->
 
-      <!-- BUSINESS -->
+      <!-- Business -->
       <div class="col-sm-6 col-md-4">
-        <div class="row">
+        <div class="row header">
           <div class="col-sm-12">
             <h2>Business</h2>
             <hr/>
           </div>
         </div>
-        <?php 
-        $i = 0;
-        $posts = wp_get_recent_posts( array(
-          'numberposts' => 4,
-          'category' => 5, 
-          'exclude' => $excludePostsIDs
-        )); 
 
-        foreach( $posts as $post ) : ?> 
+        <?php 
+          $i = 0;
+          $posts = wp_get_recent_posts( array(
+            'numberposts' => 4,
+            'category' => 5, 
+            'exclude' => $excludePostsIDs
+          )); 
+        ?>
+
+        <?php foreach( $posts as $post ) : ?> 
           <?php $i++; ?>
           <?php if( $i == 1 ) : ?>
             <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
               <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
               <h3><?php echo $post['post_title']; ?></h3>
             </a>
+            <hr>
           <?php else : ?>
-            <div class="row">
+            <div class="row article">
               <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
                 <div class="col-sm-4">
                   <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
@@ -175,11 +192,68 @@
                   <h4><?php echo $post['post_title']; ?></h4>
                 </div>
               </a>
-            </div><br>
+            </div>
+            <hr>
           <?php endif; ?>
         <?php endforeach; ?>
-      </div>
+      </div><!-- close compliance col -->
 
+    </div><!-- close cat-posts-row --> 
+
+    <div class="row map">
+      <div class="col-md-8">
+        <div id="map"></div>
+      </div>
+      <div class="col-md-4 dropdown">
+          <h2 class="category large">Cannabis By State</h2>
+          <h1>Search articles by state</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim sapien, placerat eget imperdiet a, imperdiet ac nisi. </p>
+                 <select class="cannabis-states">
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="IN">Indiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="OH">Ohio</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WV">West Virginia</option>
+            </select>
+      </div>
     </div>
   </div>
+  <script>
+      var selectedStates = ['ak', 'az', 'ar', 'ca', 'ct', 'co', 'de', 'fl', 'hi', 'il', 'ma', 'md', 'me', 'mi', 'mn', 'mt', 'nv', 'nh', 'nj', 'nm', 'ny', 'nd', 'oh', 'or', 'pa', 'ri', 'vt', 'wa', 'wv'];
+
+      jQuery(document).ready(function () {
+        jQuery('#map').vectorMap({
+          map: 'usa_en',
+          enableZoom: false,
+          backgroundColor: '#fff',
+          showTooltip: true,
+          selectedColor: null,
+          hoverColor: null,
+          selectedColor: '#2b5a22',
+          color: '#fff',
+          borderColor: '#000',
+          selectedRegions: selectedStates,
+          onRegionOver: function (event, code) {
+          },
+          onRegionClick: function(event, code, region){
+            event.preventDefault();
+          }
+        });
+      });
+    </script>
 <?php get_footer(); ?>

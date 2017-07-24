@@ -29,10 +29,15 @@ Domain Path: #{metadata(theme-text-domain-path)}
 // Reset: eliminate default browser styling (optional; commented out by default)
 //@import "reset";
 
+@import "colors";
+
 // Normalize: make browsers render things more consistently
 @import "normalize";
 
-@import 'bootstrap';
+
+//Libs
+@import "select2";
+@import "bootstrap";
 
 // Everything else
 @import "fonts";
@@ -41,3 +46,4 @@ Domain Path: #{metadata(theme-text-domain-path)}
 @import "layout";
 @import "header";
 @import "sections";
+@import "map";

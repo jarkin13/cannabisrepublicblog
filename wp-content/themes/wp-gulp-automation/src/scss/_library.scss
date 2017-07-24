@@ -33,7 +33,13 @@
   @include media($min-query, $max-query - 1) { @content; }
 }
 
-
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
 
 // == LAYOUT == //
 

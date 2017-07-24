@@ -53,8 +53,9 @@ module.exports = {
         src+'js/footer.js'
       ],
       header: [
-        src+'js/header.js'
-      ],
+        modules+'select2/dist/js/select2.full.js',
+        src+'js/libs/map/*',
+        src+'js/header.js'      ],
       // The pageloader chunk provides an example of how you would add a user-configurable feature to your theme; you can delete this if you wish
       // Have a look at the `src/inc/assets.php` to see how script bundles could be conditionally loaded by a theme
       pageloader: [
@@ -92,6 +93,7 @@ module.exports = {
     libsass: {
       includePaths: [ // Adds Bower and npm directories to the load path so you can @import directly
         './src/scss',
+        modules+'select2/dist/css/scss',
         modules+'normalize.css',
         modules+'scut/dist',
         modules+'bootstrap-sass/assets/stylesheets',

@@ -63,3 +63,15 @@ if( function_exists('acf_add_options_page') ) {
   ));
 
 }
+
+/*function add_last_nav_item($items, $args) {
+  if ($args->menu == 'header') {
+    $navitems = '<li>'. get_search_form(false) .'</li>';
+    $navitems .= $items;
+    $items = $navitems;
+    return $items;
+  }
+  return $items;
+}
+add_filter( 'wp_nav_menu_items', 'add_last_nav_item', 10, 2 );
+*/

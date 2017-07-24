@@ -8,11 +8,11 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:500|Suranna" rel="stylesheet">
+<script src="https://use.fontawesome.com/bbf9204074.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Suranna" rel="stylesheet">
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?> data-spy="scroll" data-target=".navbar" data-offset="0">
-<?php echo wp_title(); ?>
   <div id="page" class="hfeed site">
   <header>
     <nav class="navbar">
@@ -24,7 +24,9 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="<?php echo get_home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="California Cannabis CPA"></a>
-        <?php wp_nav_menu( array('menu' => 'header', 'container_class' => 'collapse navbar-collapse', 'menu_class' => 'nav navbar-nav navbar-right', 'container_id' => 'navbar') ); ?>
+        <div id="navbar">
+          <?php wp_nav_menu( array('menu' => 'header', 'container_class' => 'collapse navbar-collapse', 'menu_class' => 'nav navbar-nav navbar-right') ); ?>
+        </div>
       </div>
     </nav>
   </header>
