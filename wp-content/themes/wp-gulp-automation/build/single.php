@@ -9,9 +9,9 @@
         <div class="sidebar-title">Share</div>
           <div id="secondary" class="widget-area" role="complementary">
             <div id="fb-root"></div>
-            <a href="http://www.facebook.com/share.php?u=<?php echo get_permalink(); ?>&title=<?php echo get_the_title(); ?>">facebook</a>
-            <a href="http://twitter.com/home?status=<?php echo get_permalink(); ?>+<?php echo get_the_title(); ?>">twitter</a>
-            <?php $body = 'Check out this great article I read on ' . get_bloginfo( 'name' ) . ' -  ' . get_permalink(); ?>
+            <a href="http://www.facebook.com/share.php?u=<?php echo get_permalink(); ?>&title=<?php echo get_the_title(); ?>" target="_blank">facebook</a>
+            <a href="http://twitter.com/home?status=<?php echo get_permalink(); ?>+<?php echo get_the_title(); ?>" target="_blank">twitter</a>
+            <?php $body = 'Check out this great article I read on' . get_bloginfo( 'name' ) . ' -  ' . get_permalink(); ?>
             <a href="mailto:?subject=<?php get_bloginfo( 'name' ); ?> - <?php echo get_the_title(); ?>&body=<?php echo $body; ?>">mail</a>
           </div>
       </div>
