@@ -39,15 +39,27 @@ add_action( 'after_setup_theme', 'voidx_setup', 11 );
 
 // Sidebar declaration
 function voidx_widgets_init() {
-  register_sidebar( array(
-    'name'          => __( 'Main sidebar', 'voidx' ),
-    'id'            => 'sidebar-main',
-    'description'   => __( 'Appears to the right side of most posts and pages.', 'voidx' ),
-    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-    'after_widget'  => '</aside>',
-    'before_title'  => '<h2>',
-    'after_title'   => '</h2>'
-  ) );
+  if ( function_exists('register_sidebar') ) {
+    register_sidebar( array(
+      'name'          => __( 'Main sidebar', 'voidx' ),
+      'id'            => 'sidebar-main',
+      'description'   => __( 'Appears to the right side of most posts.', 'voidx' ),
+      'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</aside>',
+      'before_title'  => '<h2>',
+      'after_title'   => '</h2>'
+    ) );
+
+    register_sidebar( array(
+      'name'          => __( 'Share sidebar', 'voidx' ),
+      'id'            => 'sidebar-share',
+      'description'   => __( 'Appears to the left side of most posts.', 'voidx' ),
+      'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</aside>',
+      'before_title'  => '<h2>',
+      'after_title'   => '</h2>'
+    ) );
+  }
 }
 add_action( 'widgets_init', 'voidx_widgets_init' );
 
@@ -64,7 +76,7 @@ if( function_exists('acf_add_options_page') ) {
 
 }
 
-function wpb_set_post_views($postID) {
+function wpb_set_post_views( $postID ) {
     $count_key = 'wpb_post_views_count';
     $count = get_post_meta($postID, $count_key, true);
     if($count==''){
@@ -78,7 +90,7 @@ function wpb_set_post_views($postID) {
 }
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
-function wpb_track_post_views ($post_id) {
+function wpb_track_post_views( $post_id ) {
     if ( !is_single() ) return;
     if ( empty ( $post_id) ) {
         global $post;
@@ -88,18 +100,19 @@ function wpb_track_post_views ($post_id) {
 }
 add_action( 'wp_head', 'wpb_track_post_views');
 
-function wpb_get_post_views($postID){
+function wpb_get_post_views( $postID ){
     $count_key = 'wpb_post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if($count==''){
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
+    $count = get_post_meta( $postID, $count_key, true );
+    if( $count=='' ){
+        delete_post_meta( $postID, $count_key );
+        add_post_meta( $postID, $count_key, '0' );
         return "0 View";
     }
     return $count.' Views';
 }
 
-function the_titlesmall($before = '', $after = '', $echo = true, $length = false) { $title = get_the_title();
+function the_titlesmall($before = '', $after = '', $echo = true, $length = false) { 
+    $title = get_the_title();
     if( strlen($title) <= $length )
          $after = '';
     if ( $length && is_numeric($length) ) {
@@ -113,5 +126,29 @@ function the_titlesmall($before = '', $after = '', $echo = true, $length = false
         else
             return $title;
     }
+}
 
+function cccpa_get_main_category( $post_id ) {
+  $statesCat = get_categories(
+    array( 'parent' => 6 )
+  );
+  $states = '6';
+
+  foreach( $statesCat as $state ) {
+    $states .= ",";
+    $states .= $state->term_id;
+  };
+
+  $arr = array( 'exclude' => $states, 'childless' => true );
+  
+  return wp_get_post_categories( $post_id , $arr )[0];
+}
+
+function cccpa_get_state( $post_id ) {
+  $arr = array( 
+    'parent' => 6, 
+    'number' => 1
+  );
+  $state = wp_get_post_categories( $post_id , $arr )[0];
+  echo get_category( $state )->name;
 }

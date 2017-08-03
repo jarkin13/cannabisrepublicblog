@@ -1,3 +1,20 @@
+.post-meta,
+.sections .post-meta > h2 {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #989898;
+}
+
+.post-meta {
+  > h2 { 
+    display: inline-block; 
+    margin-right: 10px;
+  }
+}
+
 .rd {
   display: none;
 
@@ -7,5 +24,9 @@
 
   @media (min-width: 992px) {
     display: block;
+
+    &.rd-mobile {
+      display: none;
+    }
   }
 }

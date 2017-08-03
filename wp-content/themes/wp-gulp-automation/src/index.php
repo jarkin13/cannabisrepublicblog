@@ -10,7 +10,11 @@
         $featuredPost = get_post( $id );
       endif; ?>
       <div class="col-sm-3 col-md-4 text">
-        <h2 class="category large"><?php echo get_the_category( $featuredPost->ID )[0]->name; ?></h2>
+        <?php $mainCat = cccpa_get_main_category( $featuredPost->ID ); ?>
+        <div class="post-meta">
+          <h2 class="category large"><?php echo get_category( $mainCat )->name; ?></h2>
+          <span class="state"><?php cccpa_get_state( $featuredPost->ID ); ?></span>
+        </div>
         <h1><a href="<?php echo $featuredPost->guid ?>" title="<?php echo $featuredPost->post_title; ?>"><?php echo $featuredPost->post_title; ?></a></h1>
         <p><?php echo get_the_excerpt( $featuredPost->ID ); ?></p>
         <a href="<?php echo $featuredPost->guid ?>" role="button" class="btn btn-primary">Read More</a>
@@ -31,10 +35,15 @@
       ?>
 
       <?php foreach( $threePosts as $threePost ) : ?>
+        <?php $mainCat = cccpa_get_main_category( $threePost['ID']); ?>
+        <?php cccpa_get_main_category( $threePost['ID'] ); ?>
         <div class="col-sm-4">
           <a href="<?php echo $threePost['guid']; ?>" title="<?php echo $threePost['post_title']; ?>">
             <img src="<?php echo get_the_post_thumbnail_url( $threePost['ID'] ) ?>" alt="<?php echo $threePost['post_title']; ?>">
-            <h2 class="category"><?php echo get_the_category( $threePost['ID'] )[0]->name; ?></h2>
+            <div class="post-meta">
+              <h2 class="category"><?php echo get_category( $mainCat )->name; ?></h2>
+              <span class="state"><?php cccpa_get_state( $threePost['ID'] ); ?></span>
+            </div>
             <h1 class="small"><?php echo $threePost['post_title']; ?></h1>
           </a>
         </div>
@@ -52,10 +61,14 @@
       ?>
 
       <?php foreach( $twoPosts as $twoPost ) : ?>
+        <?php cccpa_get_main_category( $twoPost['ID'] ); ?>
         <div class="col-sm-6">
           <a href="<?php echo $twoPost['guid']; ?>" title="<?php echo $twoPost['post_title']; ?>">
             <img src="<?php echo get_the_post_thumbnail_url( $twoPost['ID'] ) ?>" alt="<?php echo $twoPost['post_title']; ?>">
-            <h2 class="category medium"><?php echo get_the_category( $twoPost['ID'] )[0]->name; ?></h2>
+             <div class="post-meta">
+              <h2 class="category"><?php echo get_category( $mainCat )->name; ?></h2>
+              <span class="state"><?php cccpa_get_state( $twoPost['ID'] ); ?></span>
+            </div>
             <h1 class="medium"><?php echo $twoPost['post_title']; ?></h1>
           </a>
         </div>
@@ -90,6 +103,9 @@
             <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
               <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
               <h3><?php echo $post['post_title']; ?></h3>
+              <div class="post-meta">
+                <span class="state"><?php cccpa_get_state( $post['ID'] ); ?></span>
+              </div>
             </a>
             <hr>
           <?php else : ?>
@@ -100,6 +116,9 @@
                 </div>
                 <div class="col-sm-8">
                   <h4><?php echo $post['post_title']; ?></h4>
+                  <div class="post-meta">
+                    <span class="state"><?php cccpa_get_state( $post['ID'] ); ?></span>
+                  </div>
                 </div>
               </a>
             </div>
@@ -132,6 +151,9 @@
             <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
               <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
               <h3><?php echo $post['post_title']; ?></h3>
+              <div class="post-meta">
+                <span class="state"><?php cccpa_get_state( $post['ID'] ); ?></span>
+              </div>
             </a>
             <hr>
           <?php else : ?>
@@ -142,6 +164,9 @@
                 </div>
                 <div class="col-sm-8">
                   <h4><?php echo $post['post_title']; ?></h4>
+                  <div class="post-meta">
+                    <span class="state"><?php cccpa_get_state( $post['ID'] ); ?></span>
+                  </div>
                 </div>
               </a>
             </div>
@@ -174,6 +199,9 @@
             <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
               <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
               <h3><?php echo $post['post_title']; ?></h3>
+              <div class="post-meta">
+                <span class="state"><?php cccpa_get_state( $post['ID'] ); ?></span>
+              </div>
             </a>
             <hr>
           <?php else : ?>
@@ -184,6 +212,9 @@
                 </div>
                 <div class="col-sm-8">
                   <h4><?php echo $post['post_title']; ?></h4>
+                  <div class="post-meta">
+                    <span class="state"><?php cccpa_get_state( $post['ID'] ); ?></span>
+                  </div>
                 </div>
               </a>
             </div>
@@ -199,7 +230,9 @@
         <div id="map"></div>
       </div>
       <div class="col-md-4 dropdown">
-          <h2 class="category large">Cannabis By State</h2>
+          <div class="post-meta">
+            <h2 class="category large">Cannabis By State</h2>
+          </div>
           <h1>Search articles by state</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim sapien, placerat eget imperdiet a, imperdiet ac nisi. </p>
                  <select class="cannabis-states">
