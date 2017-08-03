@@ -20,12 +20,6 @@
       </div>
     </div>
 
-     <div class="row search-row">
-      <div class="col-sm-12">
-        <?php get_search_form(); ?>
-      </div>
-    </div>
-
     <!-- 3 POSTS -->
     <div class="row">
       <?php 
@@ -76,7 +70,7 @@
       <div class="col-sm-6 col-md-4">
         <div class="row header">
           <div class="col-sm-12">
-            <h2>Finances</h2>
+            <h2>Money</h2>
             <hr/>
           </div>
         </div>
@@ -118,7 +112,7 @@
       <div class="col-sm-6 col-md-4">
         <div class="row header">
           <div class="col-sm-12">
-            <h2>Compliance</h2>
+            <h2>Tax & Licenses</h2>
             <hr/>
           </div>
         </div>

@@ -1,7 +1,26 @@
-<div id="wrap-sidebar" class="wrap-sidebar">
-  <?php if ( is_active_sidebar( 'sidebar-main' ) ) { ?>
-    <div id="secondary" class="widget-area" role="complementary">
-      <?php dynamic_sidebar( 'sidebar-main' ); ?>
-    </div>
-  <?php } ?>
-</div>
+<section class="most-popular">
+  <h2>Most Popular</h2>
+  <?php 
+  $popularpost = new WP_Query( array( 'posts_per_page' => 4, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
+  while ( $popularpost->have_posts() ) : $popularpost->the_post();
+  ?>
+  <div class="row">
+    <a href="<?php echo $post->guid; ?>" title="<?php echo $post->post_title; ?>">
+      <div class="col-sm-5">
+        <img src="<?php echo get_the_post_thumbnail_url( $post->ID ) ?>" alt="<?php echo get_the_title(); ?>">
+      </div>
+      <div class="col-sm-7">
+        <?php echo get_the_category()[0]->name; ?>
+        <?php the_titlesmall('', '...', true, 70); ?>
+      </div>
+    </a>
+  </div>
+</section>
+<br>
+<?php endwhile; ?>
+<?php if ( is_active_sidebar( 'sidebar-main' ) ) { ?>
+  <div id="secondary" class="widget-area" role="complementary">
+    <?php dynamic_sidebar( 'sidebar-main' ); ?>
+  </div>
+<?php } ?>
+

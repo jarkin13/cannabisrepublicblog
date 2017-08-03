@@ -1,4 +1,4 @@
-<section class="most-popular">
+<footer class="most-popular rd rd-mobile">
   <h2>Most Popular</h2>
   <?php 
   $popularpost = new WP_Query( array( 'posts_per_page' => 4, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
@@ -15,12 +15,5 @@
       </div>
     </a>
   </div>
-</section>
-<br>
-<?php endwhile; ?>
-<?php if ( is_active_sidebar( 'sidebar-main' ) ) { ?>
-  <div id="secondary" class="widget-area" role="complementary">
-    <?php dynamic_sidebar( 'sidebar-main' ); ?>
-  </div>
-<?php } ?>
-
+  <br>
+</footer>

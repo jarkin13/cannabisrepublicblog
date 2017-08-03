@@ -9,7 +9,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
 <script src="https://use.fontawesome.com/bbf9204074.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Suranna" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Playfair+Display:700" rel="stylesheet">
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?> data-spy="scroll" data-target=".navbar" data-offset="0">
@@ -28,5 +28,6 @@
           <?php wp_nav_menu( array('menu' => 'header', 'container_class' => 'collapse navbar-collapse', 'menu_class' => 'nav navbar-nav navbar-right') ); ?>
         </div>
       </div>
+
     </nav>
   </header>
