@@ -19,16 +19,7 @@
     <meta property="og:image"         content="<?php echo get_the_post_thumbnail_url( $post->ID ) ?>" />
   <?php endif; ?>
 </head>
-<body <?php body_class(); ?> data-spy="scroll" data-target=".navbar" data-offset="0">
-<!-- Load Facebook SDK for JavaScript -->
-            <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
+<body <?php body_class(); ?> data-spy="scroll" data-target=".navbar" data-offset="0">            
   <div id="page" class="hfeed site">
   <header>
     <nav class="navbar">

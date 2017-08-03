@@ -8,11 +8,11 @@
       <div class="col-xs-2 col-sm-2 rd rd-no-mobile">
         <div class="sidebar-title">Share</div>
           <div id="secondary" class="widget-area" role="complementary">
-            <!-- Your share button code -->
-            <div class="fb-share-button" 
-              data-href="<?php bloginfo( 'name' ); ?>" 
-              data-layout="button_count">
-            </div>
+            <div id="fb-root"></div>
+            <a href="http://www.facebook.com/share.php?u=<?php echo get_permalink(); ?>&title=<?php echo get_the_title(); ?>">facebook</a>
+            <a href="http://twitter.com/home?status=<?php echo get_permalink(); ?>+<?php echo get_the_title(); ?>">twitter</a>
+            <?php $body = 'Check out this great article I read on ' . get_bloginfo( 'name' ) . ' -  ' . get_permalink(); ?>
+            <a href="mailto:?subject=<?php get_bloginfo( 'name' ); ?> - <?php echo get_the_title(); ?>&body=<?php echo $body; ?>">mail</a>
           </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-6">
@@ -44,4 +44,11 @@
     </div>
   <?php endwhile; // End of the loop. ?>
 </div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <?php get_footer(); ?>
