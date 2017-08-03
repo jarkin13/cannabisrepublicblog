@@ -12,10 +12,10 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Old+Standard+TT:400,700" rel="stylesheet">
   <?php wp_head(); ?>
   <?php if( is_single() ) : ?>
-    <meta property="og:url"           content="<?php echo get_permalink( $post->id ); ?>" />
+    <meta property="og:url"           content="<?php echo get_permalink( $post->ID ); ?>" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="<?php bloginfo( 'name' ); ?>" />
-    <meta property="og:description"   content="Your description" />
+    <meta property="og:title"         content="<?php bloginfo( 'name' ); ?> la la <?php echo get_the_excerpt( $post->ID); ?>" />
+    <meta property="og:description"   content="<?php echo get_the_excerpt( $post->ID); ?>" />
     <meta property="og:image"         content="<?php echo get_the_post_thumbnail_url( $post->ID ) ?>" />
   <?php endif; ?>
 </head>
