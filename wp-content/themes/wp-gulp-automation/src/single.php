@@ -9,6 +9,7 @@
         <div class="sidebar-title">Share</div>
         <?php if ( is_active_sidebar( 'sidebar-share' ) ) { ?>
           <div id="secondary" class="widget-area" role="complementary">
+          hi
             <!-- Your share button code -->
             <div class="fb-share-button" 
               data-href="<?php bloginfo( 'name' ); ?>" 
