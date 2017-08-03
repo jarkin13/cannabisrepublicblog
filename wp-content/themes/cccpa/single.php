@@ -10,7 +10,7 @@
           <div id="secondary" class="widget-area" role="complementary">
             <!-- Your share button code -->
             <div class="fb-share-button" 
-              data-href="<?php bloginfo( 'name' ); ?>" 
+              data-href="<?php echo get_permalink( $post->ID ); ?>" 
               data-layout="button_count">
             </div>
           </div>
