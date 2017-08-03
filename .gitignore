@@ -33,5 +33,5 @@ wp-content/plugins/*
 wp-content/themes/*
 !wp-content/themes/jamie-arkin/
 !wp-content/themes/wp-gulp-automation/
-!wp-content/themes/wp-gulp-automation/cccpa/
+!wp-content/themes/cccpa/
 wp-content/themes/wp-gulp-automation/node_modules/
