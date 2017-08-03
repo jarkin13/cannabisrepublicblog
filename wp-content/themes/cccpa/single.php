@@ -7,16 +7,13 @@
     <div class="row">
       <div class="col-xs-2 col-sm-2 rd rd-no-mobile">
         <div class="sidebar-title">Share</div>
-        <?php if ( is_active_sidebar( 'sidebar-share' ) ) { ?>
           <div id="secondary" class="widget-area" role="complementary">
-          hi
             <!-- Your share button code -->
             <div class="fb-share-button" 
               data-href="<?php bloginfo( 'name' ); ?>" 
               data-layout="button_count">
             </div>
           </div>
-        <?php } ?>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-6">
         <ul class="post-meta">
