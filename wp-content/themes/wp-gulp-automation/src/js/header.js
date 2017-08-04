@@ -9,7 +9,7 @@
         $('#most-popular-sidebar').height($('#post-content').height() - $('#most-popular-sidebar').offset().top);
       });
       $(window).resize();
-    };
+    }
 
     if( $('#home').val() !== undefined ) {
       $(".cannabis-states").select2({
@@ -27,6 +27,6 @@
       $('.dropdown').click(function(event){
           event.stopPropagation();
       });
-    };
+    }
   });
 }(jQuery));
