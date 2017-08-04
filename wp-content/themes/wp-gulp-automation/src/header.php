@@ -35,6 +35,5 @@
           <?php wp_nav_menu( array('menu' => 'header', 'container_class' => 'collapse navbar-collapse', 'menu_class' => 'nav navbar-nav navbar-right') ); ?>
         </div>
       </div>
-
     </nav>
   </header>
