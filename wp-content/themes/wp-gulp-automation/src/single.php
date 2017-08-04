@@ -1,9 +1,9 @@
 <!-- POSTS -->
 <?php get_header(); ?>
 <?php $mainCat = cccpa_get_main_category( $post->ID ); ?>
+<?php wpb_set_post_views($post->ID); ?>
 <div id="single" class="container">
   <?php while ( have_posts() ) : the_post(); ?>
-    <?php wpb_set_post_views($post->ID); ?>
     <div class="row">
       <div id="share-sidebar" class="col-xs-2 col-sm-2 rd rd-no-mobile">
         <?php get_template_part( 'template-parts/post/content', 'share' ); ?>
