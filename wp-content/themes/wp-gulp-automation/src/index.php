@@ -235,8 +235,13 @@
           </div>
           <h1>Search articles by state</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim sapien, placerat eget imperdiet a, imperdiet ac nisi. </p>
-          <?php //$categories = get_terms( 'category', array('parent' => 6, 'childless' => true) ); ?>
-          <?php $categories = get_terms( 'category', array('parent' => 4, 'childless' => true) ); ?>
+          <?php $categories = get_categories( array('number' => 0, 'parent' => 6, 'hide_empty' => false) ); ?>
+          <?php //$categories = get_terms( 'category', array('parent' => 4, 'childless' => true) ); ?>
+          <?php $arr = ''; ?>
+          <?php foreach( $categories as $cat ) : ?>
+            <?php $arr .= "'" . $cat->name . "': '" . $cat->slug . "', "; ?>
+          <?php endforeach; ?>
+          <?php echo $arr; ?>
           <select class="cannabis-states">
             <?php foreach( $categories as $cat ) : ?>
               <option value="<?php echo get_category_link( $cat->term_id ) ?>"><?php echo $cat->name; ?></option>
@@ -247,6 +252,37 @@
   </div>
   <script>
       var selectedStates = ['ak', 'az', 'ar', 'ca', 'ct', 'co', 'de', 'fl', 'hi', 'il', 'ma', 'md', 'me', 'mi', 'mn', 'mt', 'nv', 'nh', 'nj', 'nm', 'ny', 'nd', 'oh', 'or', 'pa', 'ri', 'vt', 'wa', 'wv'];
+      var stateArr = {
+        'alaska': 'Alaska',
+        'arizona': 'Arizona',
+        'arkansas': 'Arkansas',
+        'california': 'California',
+        'colorado': 'Colorado',
+        'connecticut': 'Connecticut',
+        'delaware': 'Delaware',
+        'florida': 'Florida',
+        'hawaii': 'Hawaii',
+        'illinois': 'Illinois',
+        'maine': 'Maine',
+        'maryland': 'Maryland',
+        'massachusetts': 'Massachusetts',
+        'michigan': 'Michigan',
+        'minnesota': 'Minnesota',
+        'montana': 'Montana',
+        'nevada': 'Nevada',
+        'new-hampshire': 'New Hampshire',
+        'new-jersey': 'New Jersey',
+        'new-mexico': 'New Mexico',
+        'new-york': 'New York',
+        'north-dakota': 'North Dakota',
+        'ohio': 'Ohio',
+        'oregon': 'Oregon',
+        'pennsylvania': 'Pennsylvania',
+        'rhode-island': 'Rhode Island',
+        'vermont': 'Vermont',
+        'washington': 'Washington',
+        'west-virginia': 'West Virginia'
+      };
 
       jQuery(document).ready(function () {
         jQuery('#map').vectorMap({
@@ -263,7 +299,11 @@
           onRegionOver: function (event, code) {
           },
           onRegionClick: function(event, code, region){
-            event.preventDefault();
+            $.each( stateArr, function( key, value ) {
+              if( region === value ) {
+                location.href = '/category/state/' + key;
+              };
+            });
           }
         });
       });
