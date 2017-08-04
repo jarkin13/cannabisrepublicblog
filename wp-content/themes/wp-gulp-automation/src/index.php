@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+  <?php include(include_once('inc/settings.php')); ?>
   <div id="home" class="container sections">
     <!-- FEATURED POST -->
     <div class="row featured">
