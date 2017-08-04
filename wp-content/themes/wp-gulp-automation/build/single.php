@@ -8,7 +8,6 @@
       <div class="col-xs-2 col-sm-2 rd rd-no-mobile">
         <div class="sidebar-title">Share</div>
           <div id="secondary" class="widget-area" role="complementary">
-            <div id="fb-root"></div>
             <a href="http://www.facebook.com/share.php?u=<?php echo get_permalink(); ?>&title=<?php echo get_the_title(); ?>" target="_blank">facebook</a>
             <a href="http://twitter.com/home?status=<?php echo get_permalink(); ?>+<?php echo get_the_title(); ?>" target="_blank">twitter</a>
             <?php $body = 'Check out this great article I read on' . get_bloginfo( 'name' ) . ' -  ' . get_permalink(); ?>

@@ -15,12 +15,12 @@
           <h2 class="category large"><?php echo get_category( $mainCat )->name; ?></h2>
           <span class="state"><?php cccpa_get_state( $featuredPost->ID ); ?></span>
         </div>
-        <h1><a href="<?php echo $featuredPost->guid ?>" title="<?php echo $featuredPost->post_title; ?>"><?php echo $featuredPost->post_title; ?></a></h1>
+        <h1><a href="<?php echo get_permalink( $featuredPost->ID ); ?>" title="<?php echo $featuredPost->post_title; ?>"><?php echo $featuredPost->post_title; ?></a></h1>
         <p><?php echo get_the_excerpt( $featuredPost->ID ); ?></p>
-        <a href="<?php echo $featuredPost->guid ?>" role="button" class="btn btn-primary">Read More</a>
+        <a href="<?php echo get_permalink( $featuredPost->ID ); ?>" role="button" class="btn btn-primary">Read More</a>
       </div>
       <div class="col-sm-8 col-md-7 pull-right image">
-        <a href="<?php echo $featuredPost->guid ?>" title="<?php echo $featuredPost->post_title; ?>"><img src="<?php echo get_the_post_thumbnail_url( $featuredPost->ID ) ?>" alt="<?php echo $featuredPost->post_title; ?>"></a>
+        <a href="<?php echo get_permalink( $featuredPost->ID ); ?>" title="<?php echo $featuredPost->post_title; ?>"><img src="<?php echo get_the_post_thumbnail_url( $featuredPost->ID ); ?>" alt="<?php echo $featuredPost->post_title; ?>"></a>
       </div>
     </div>
 
@@ -38,7 +38,7 @@
         <?php $mainCat = cccpa_get_main_category( $threePost['ID']); ?>
         <?php cccpa_get_main_category( $threePost['ID'] ); ?>
         <div class="col-sm-4">
-          <a href="<?php echo $threePost['guid']; ?>" title="<?php echo $threePost['post_title']; ?>">
+          <a href="<?php echo get_permalink( $threePost['ID'] ); ?>" title="<?php echo $threePost['post_title']; ?>">
             <img src="<?php echo get_the_post_thumbnail_url( $threePost['ID'] ) ?>" alt="<?php echo $threePost['post_title']; ?>">
             <div class="post-meta">
               <h2 class="category"><?php echo get_category( $mainCat )->name; ?></h2>
@@ -63,7 +63,7 @@
       <?php foreach( $twoPosts as $twoPost ) : ?>
         <?php cccpa_get_main_category( $twoPost['ID'] ); ?>
         <div class="col-sm-6">
-          <a href="<?php echo $twoPost['guid']; ?>" title="<?php echo $twoPost['post_title']; ?>">
+          <a href="<?php echo get_permalink( $twoPost['ID'] ); ?>" title="<?php echo $twoPost['post_title']; ?>">
             <img src="<?php echo get_the_post_thumbnail_url( $twoPost['ID'] ) ?>" alt="<?php echo $twoPost['post_title']; ?>">
              <div class="post-meta">
               <h2 class="category"><?php echo get_category( $mainCat )->name; ?></h2>
@@ -100,7 +100,7 @@
         <?php foreach( $posts as $post ) : ?> 
           <?php $i++; ?>
           <?php if( $i == 1 ) : ?>
-            <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
+            <a href="<?php echo get_permalink( $post['ID'] ); ?>" title="<?php echo $post['post_title']; ?>">
               <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
               <h3><?php echo $post['post_title']; ?></h3>
               <div class="post-meta">
@@ -110,7 +110,7 @@
             <hr>
           <?php else : ?>
             <div class="row article">
-              <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
+              <a href="<?php echo get_permalink( $post['ID'] ); ?>" title="<?php echo $post['post_title']; ?>">
                 <div class="col-sm-4">
                   <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
                 </div>
@@ -148,7 +148,7 @@
         <?php foreach( $posts as $post ) : ?> 
           <?php $i++; ?>
           <?php if( $i == 1 ) : ?>
-            <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
+            <a href="<?php echo get_permalink( $post['ID'] ); ?>" title="<?php echo $post['post_title']; ?>">
               <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
               <h3><?php echo $post['post_title']; ?></h3>
               <div class="post-meta">
@@ -158,7 +158,7 @@
             <hr>
           <?php else : ?>
             <div class="row article">
-              <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
+              <a href="<?php echo get_permalink( $post['ID'] ); ?>" title="<?php echo $post['post_title']; ?>">
                 <div class="col-sm-4">
                   <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
                 </div>
@@ -196,7 +196,7 @@
         <?php foreach( $posts as $post ) : ?> 
           <?php $i++; ?>
           <?php if( $i == 1 ) : ?>
-            <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
+            <a href="<?php echo get_permalink( $post['ID'] ); ?>" title="<?php echo $post['post_title']; ?>">
               <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
               <h3><?php echo $post['post_title']; ?></h3>
               <div class="post-meta">
@@ -206,7 +206,7 @@
             <hr>
           <?php else : ?>
             <div class="row article">
-              <a href="<?php echo $post['guid']; ?>" title="<?php echo $post['post_title']; ?>">
+              <a href="<?php echo get_permalink( $post['ID'] ); ?>" title="<?php echo $post['post_title']; ?>">
                 <div class="col-sm-4">
                   <img src="<?php echo get_the_post_thumbnail_url( $post['ID'] ) ?>">
                 </div>
