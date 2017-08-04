@@ -235,7 +235,8 @@
           </div>
           <h1>Search articles by state</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim sapien, placerat eget imperdiet a, imperdiet ac nisi. </p>
-          <?php $categories = get_terms( 'category', array('parent' => 6, 'childless' => true) ); ?>
+          <?php //$categories = get_terms( 'category', array('parent' => 6, 'childless' => true) ); ?>
+          <?php $categories = get_terms( 'category', array('parent' => 4, 'childless' => true) ); ?>
           <select class="cannabis-states">
             <?php foreach( $categories as $cat ) : ?>
               <option value="<?php echo get_category_link( $cat->term_id ) ?>"><?php echo $cat->name; ?></option>
