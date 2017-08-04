@@ -11,7 +11,7 @@
       ) );
   while ( $popularpost->have_posts() ) : $popularpost->the_post(); ?>
     <div class="row">
-      <a href="<?php echo $post->guid; ?>" title="<?php echo $post->post_title; ?>">
+      <a href="<?php echo get_permalink( $post->ID ); ?>" title="<?php echo $post->post_title; ?>">
         <div class="col-sm-5">
           <img src="<?php echo get_the_post_thumbnail_url( $post->ID ) ?>" alt="<?php echo get_the_title(); ?>">
         </div>

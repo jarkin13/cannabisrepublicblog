@@ -13,7 +13,7 @@
   while ( $popularpost->have_posts() ) : $popularpost->the_post();
   ?>
   <div class="row">
-    <a href="<?php echo $post->guid; ?>" title="<?php echo $post->post_title; ?>">
+    <a href="<?php echo get_permalink( $post->ID ); ?>" title="<?php echo $post->post_title; ?>">
       <div class="col-sm-12 border">
         <hr>
       </div>
