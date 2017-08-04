@@ -80,6 +80,14 @@ a.btn,
 
 hr {
   margin-bottom: 0;
+
+  &.black {
+    border-top-color: #000;
+  }
+
+  &.thick {
+    border-top-width: 4px;
+  }
 }
 
 .sticky {
