@@ -1,5 +1,5 @@
 <?php $mainCat = cccpa_get_main_category( $post->ID ); ?>
-<section class="sidebar most-popular rd rd-no-mobile">
+<section class="sidebar most-popular sticky rd rd-no-mobile">
   <div class="sidebar-title">Most Popular</div>
   <?php 
   $popularpost = new WP_Query( 
@@ -30,11 +30,12 @@
     </a>
   </div>
   <?php endwhile; ?>
+  <br>
+  <?php if ( is_active_sidebar( 'sidebar-main' ) ) { ?>
+    <div id="secondary" class="widget-area" role="complementary">
+      <?php dynamic_sidebar( 'sidebar-main' ); ?>
+    </div>
+  <?php } ?>
 </section>
-<br>
-<?php if ( is_active_sidebar( 'sidebar-main' ) ) { ?>
-  <div id="secondary" class="widget-area" role="complementary">
-    <?php dynamic_sidebar( 'sidebar-main' ); ?>
-  </div>
-<?php } ?>
+
 

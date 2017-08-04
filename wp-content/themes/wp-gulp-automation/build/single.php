@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 pull-right">
+      <div id="most-popular-sidebar" class="col-md-4 pull-right">
         <?php get_sidebar(); ?>
       </div>
       <div class="col-sm-12">

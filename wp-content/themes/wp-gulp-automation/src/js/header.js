@@ -24,6 +24,7 @@
 
       $(window).resize(function() {
         $('#share-sidebar').height($('#post-content').height() - $('#share-sidebar').offset().top);
+        $('#most-popular-sidebar').height($('#post-content').height() - $('#share-sidebar').offset().top);
       });
       $(window).resize();
     });

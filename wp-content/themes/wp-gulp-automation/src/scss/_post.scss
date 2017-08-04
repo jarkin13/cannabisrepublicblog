@@ -42,15 +42,14 @@
 
   .sidebar {
     margin-top: 8px;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -o-sticky;
+    position: -ms-sticky;
+    position: sticky;
+    top: 10px;
     
     &.share {
-      position: -webkit-sticky;
-      position: -moz-sticky;
-      position: -o-sticky;
-      position: -ms-sticky;
-      position: sticky;
-      top: 10px;
-    
       .post-meta p { padding-top: 12px; }
     }
   }
