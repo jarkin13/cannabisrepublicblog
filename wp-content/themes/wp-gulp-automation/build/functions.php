@@ -136,9 +136,10 @@ function cccpa_get_main_category( $post_id ) {
 
 function cccpa_get_state( $post_id ) {
   $arr = array( 
-    'parent' => 6, 
+    'parent' => get_cat_ID( 'states' ), 
     'number' => 1
   );
+  
   $state = wp_get_post_categories( $post_id , $arr )[0];
   echo get_category( $state )->name;
 }
