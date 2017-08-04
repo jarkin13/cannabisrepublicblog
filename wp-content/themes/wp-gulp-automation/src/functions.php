@@ -129,17 +129,7 @@ function the_titlesmall($before = '', $after = '', $echo = true, $length = false
 }
 
 function cccpa_get_main_category( $post_id ) {
-  $statesCat = get_categories(
-    array( 'parent' => 6 )
-  );
-  $states = '6';
-
-  foreach( $statesCat as $state ) {
-    $states .= ",";
-    $states .= $state->term_id;
-  };
-
-  $arr = array( 'exclude' => $states, 'childless' => true );
+  $arr = array( 'parent' => 0, 'childless' => true );
   
   return wp_get_post_categories( $post_id , $arr )[0];
 }

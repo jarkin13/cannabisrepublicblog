@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-  <div class="container sections">
+  <div id="home" class="container sections">
     <!-- FEATURED POST -->
     <div class="row featured">
       <?php 
@@ -235,28 +235,12 @@
           </div>
           <h1>Search articles by state</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim sapien, placerat eget imperdiet a, imperdiet ac nisi. </p>
-                 <select class="cannabis-states">
-                <option value="CT">Connecticut</option>
-                <option value="DE">Delaware</option>
-                <option value="FL">Florida</option>
-                <option value="GA">Georgia</option>
-                <option value="IN">Indiana</option>
-                <option value="ME">Maine</option>
-                <option value="MD">Maryland</option>
-                <option value="MA">Massachusetts</option>
-                <option value="MI">Michigan</option>
-                <option value="NH">New Hampshire</option>
-                <option value="NJ">New Jersey</option>
-                <option value="NY">New York</option>
-                <option value="NC">North Carolina</option>
-                <option value="OH">Ohio</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="RI">Rhode Island</option>
-                <option value="SC">South Carolina</option>
-                <option value="VT">Vermont</option>
-                <option value="VA">Virginia</option>
-                <option value="WV">West Virginia</option>
-            </select>
+          <?php $categories = get_terms( 'category', array('parent' => 6, 'childless' => true) ); ?>
+          <select class="cannabis-states">
+            <?php foreach( $categories as $cat ) : ?>
+              <option value="<?php echo get_category_link( $cat->term_id ) ?>"><?php echo $cat->name; ?></option>
+            <?php endforeach; ?>
+          </select>
       </div>
     </div>
   </div>
