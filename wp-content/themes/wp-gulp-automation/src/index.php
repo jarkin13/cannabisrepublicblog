@@ -92,7 +92,7 @@
           $i = 0;
           $posts = wp_get_recent_posts( array(
             'numberposts' => 4,
-            'category' => 3, 
+            'category' => $money_cat_id, 
             'exclude' => $excludePostsIDs
           )); 
         ?>
@@ -140,8 +140,7 @@
           $i = 0;
           $posts = wp_get_recent_posts( array(
             'numberposts' => 4,
-            'category' => 4, 
-            //'category' => 5, 
+            'category' => $tax_and_licenses_cat_id, 
             'exclude' => $excludePostsIDs
           )); 
         ?>
@@ -189,8 +188,7 @@
           $i = 0;
           $posts = wp_get_recent_posts( array(
             'numberposts' => 4,
-            'category' => 5, 
-            //'category' => 2, 
+            'category' => $business_cat_id,
             'exclude' => $excludePostsIDs
           )); 
         ?>
@@ -237,8 +235,7 @@
           </div>
           <h1>Search articles by state</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim sapien, placerat eget imperdiet a, imperdiet ac nisi. </p>
-          <?php //$categories = get_categories( array('number' => 0, 'parent' => 6, 'hide_empty' => false) ); ?>
-          <?php $categories = get_terms( 'category', array('parent' => 4, 'childless' => true) ); ?>
+          <?php $categories = get_terms( 'category', array('parent' => $states_cat_id, 'childless' => true) ); ?>
           <?php 
           /*$arr = ''; 
           foreach( $categories as $cat ) : 
@@ -253,62 +250,4 @@
       </div>
     </div>
   </div>
-  <script>
-      var selectedStates = ['ak', 'az', 'ar', 'ca', 'ct', 'co', 'de', 'fl', 'hi', 'il', 'ma', 'md', 'me', 'mi', 'mn', 'mt', 'nv', 'nh', 'nj', 'nm', 'ny', 'nd', 'oh', 'or', 'pa', 'ri', 'vt', 'wa', 'wv'];
-      var stateArr = {
-        'alaska': 'Alaska',
-        'arizona': 'Arizona',
-        'arkansas': 'Arkansas',
-        'california': 'California',
-        'colorado': 'Colorado',
-        'connecticut': 'Connecticut',
-        'delaware': 'Delaware',
-        'florida': 'Florida',
-        'hawaii': 'Hawaii',
-        'illinois': 'Illinois',
-        'maine': 'Maine',
-        'maryland': 'Maryland',
-        'massachusetts': 'Massachusetts',
-        'michigan': 'Michigan',
-        'minnesota': 'Minnesota',
-        'montana': 'Montana',
-        'nevada': 'Nevada',
-        'new-hampshire': 'New Hampshire',
-        'new-jersey': 'New Jersey',
-        'new-mexico': 'New Mexico',
-        'new-york': 'New York',
-        'north-dakota': 'North Dakota',
-        'ohio': 'Ohio',
-        'oregon': 'Oregon',
-        'pennsylvania': 'Pennsylvania',
-        'rhode-island': 'Rhode Island',
-        'vermont': 'Vermont',
-        'washington': 'Washington',
-        'west-virginia': 'West Virginia'
-      };
-
-      jQuery(document).ready(function () {
-        jQuery('#map').vectorMap({
-          map: 'usa_en',
-          enableZoom: false,
-          backgroundColor: '#fff',
-          showTooltip: true,
-          selectedColor: null,
-          hoverColor: null,
-          selectedColor: '#2b5a22',
-          color: '#fff',
-          borderColor: '#000',
-          selectedRegions: selectedStates,
-          onRegionOver: function (event, code) {
-          },
-          onRegionClick: function(event, code, region){
-            $.each( stateArr, function( key, value ) {
-              if( region === value ) {
-                location.href = '/category/state/' + key;
-              };
-            });
-          }
-        });
-      });
-    </script>
 <?php get_footer(); ?>

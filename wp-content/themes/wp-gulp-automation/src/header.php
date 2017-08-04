@@ -38,3 +38,5 @@
 
     </nav>
   </header>
+  <?php include(include_once('inc/settings.php')); ?>
+  
