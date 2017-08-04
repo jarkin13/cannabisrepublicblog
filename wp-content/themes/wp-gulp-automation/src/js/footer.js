@@ -42,7 +42,6 @@
         enableZoom: false,
         backgroundColor: '#fff',
         showTooltip: true,
-        selectedColor: null,
         hoverColor: null,
         selectedColor: '#2b5a22',
         color: '#fff',
@@ -54,7 +53,7 @@
           $.each( stateArr, function( key, value ) {
             if( region === value ) {
               location.href = '/category/state/' + key;
-            };
+            }
           });
         }
       });
