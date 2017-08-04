@@ -1,5 +1,5 @@
 <?php $mainCat = cccpa_get_main_category( $post->ID ); ?>
-<section class="most-popular rd rd-no-mobile">
+<section class="sidebar most-popular rd rd-no-mobile">
   <div class="sidebar-title">Most Popular</div>
   <?php 
   $popularpost = new WP_Query( 
@@ -13,14 +13,12 @@
   while ( $popularpost->have_posts() ) : $popularpost->the_post();
   ?>
   <div class="row">
+    <div class="col-sm-12 border"><hr></div>
     <a href="<?php echo get_permalink( $post->ID ); ?>" title="<?php echo $post->post_title; ?>">
-      <div class="col-sm-12 border">
-        <hr>
-      </div>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <img src="<?php echo get_the_post_thumbnail_url( $post->ID ) ?>" alt="<?php echo get_the_title(); ?>">
       </div>
-      <div class="col-sm-7">
+      <div class="col-sm-6">
         <div class="post-meta">
           <span class="category"><?php echo get_category( $mainCat )->name; ?></span>
         </div>

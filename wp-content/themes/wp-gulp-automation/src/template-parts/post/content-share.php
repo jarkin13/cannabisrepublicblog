@@ -25,7 +25,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 border"><hr></div>
-      <?php $body = 'Check out this great article I read on' . get_bloginfo( 'name' ) . ' -  ' . get_permalink(); ?>
+      <?php $body = 'Check out this great article I read on ' . get_bloginfo( 'name' ) . ' -  ' . get_permalink(); ?>
       <a href="mailto:?subject=<?php get_bloginfo( 'name' ); ?> - <?php echo get_the_title(); ?>&body=<?php echo $body; ?>" class="email">
         <div class="col-sm-5">
           <i class="fa fa-envelope-o" aria-hidden="true"></i>
