@@ -140,7 +140,8 @@
           $i = 0;
           $posts = wp_get_recent_posts( array(
             'numberposts' => 4,
-            'category' => 4, 
+            //'category' => 4, 
+            'category' => 5, 
             'exclude' => $excludePostsIDs
           )); 
         ?>
@@ -188,7 +189,8 @@
           $i = 0;
           $posts = wp_get_recent_posts( array(
             'numberposts' => 4,
-            'category' => 5, 
+            //'category' => 5, 
+            'category' => 2, 
             'exclude' => $excludePostsIDs
           )); 
         ?>
