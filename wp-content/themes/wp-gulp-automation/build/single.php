@@ -1,6 +1,5 @@
 <!-- POSTS -->
 <?php get_header(); ?>
-<div class="col-md-12">
 <?php $mainCat = cccpa_get_main_category( $post->ID ); ?>
 <div id="single" class="container">
   <?php while ( have_posts() ) : the_post(); ?>
@@ -22,7 +21,7 @@
         <img src="<?php echo get_the_post_thumbnail_url( $post->ID ) ?>" alt="<?php echo get_the_title(); ?>" class="post-image">
         <div class="row">
           <div class="col-xs-2 col-sm-2 rd rd-mobile">
-            
+            <?php get_template_part( 'template-parts/post/content', 'share' ); ?>
           </div>
           <div class="col-xs-10 col-sm-10 col-md-12">
             <?php the_content(); ?>
