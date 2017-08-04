@@ -47,9 +47,8 @@
         color: '#fff',
         borderColor: '#000',
         selectedRegions: selectedStates,
-        onRegionOver: function (event, code) {
-        },
         onRegionClick: function(event, code, region){
+          event.preventDefault();
           $.each( stateArr, function( key, value ) {
             if( region === value ) {
               location.href = '/category/state/' + key;
