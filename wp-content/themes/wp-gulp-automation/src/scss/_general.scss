@@ -3,6 +3,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow: initial;
 }
 html {
   font-size: 18px;
@@ -79,4 +80,11 @@ a.btn,
 
 hr {
   margin-bottom: 0;
+}
+
+.sticky {
+   position: -moz-sticky;
+      position: -o-sticky;
+      position: -ms-sticky;
+      position: sticky;
 }

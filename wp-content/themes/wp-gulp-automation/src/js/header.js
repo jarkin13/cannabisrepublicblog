@@ -21,6 +21,11 @@
 
         });
       $(".cannabis-states").select2("val", " ");
+
+      $(window).resize(function() {
+        $('#share-sidebar').height($('#post-content').height() - $('#share-sidebar').offset().top);
+      });
+      $(window).resize();
     });
 
     $(window).click(function() {
