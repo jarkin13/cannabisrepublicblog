@@ -1,50 +1,47 @@
 <?php get_header(); ?>
 <div id="blogs" class="container">
-  <?php if( is_category() ) : ?>
-    <h1><?php single_cat_title(); ?></h1>
+  
+    
+
+
+    <?php 
+
+      $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
+      $custom_args = array(
+          'post_type' => 'post',
+          'posts_per_page' => 2,
+          'paged' => $paged
+        );
+
+      $custom_query = new WP_Query( $custom_args ); ?>
+
+      <?php if ( $custom_query->have_posts() ) : ?>
+        <h1><?php echo $post->ID; ?></h1>
     <hr class="black thick">
-  <?php endif; ?>
-  <?php  if ( have_posts() ) : ?>
-    <div class="row top">
-      <?php 
-      $i = 0;
-      $c = ( object ) array(
-        'counter' => 0,
-        'total'     => 0
-      ); ?>
-      <div class="col-sm-6 md-heading">
-      <?php while ( have_posts() ) : the_post(); ?>
-        <?php if( $i < 1 ) : ?>
-          <?php get_template_part( 'template-parts/post/content', 'default' ); ?>
-          <?php $i++; $c->counter++; ?>
-        <?php endif; ?>
-      <?php endwhile; ?>
-      </div>
+        <!-- the loop -->
+        <?php while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
+          <article class="loop">
+            <h3><?php the_title(); ?></h3>
+            <div class="content">
+              <?php the_excerpt(); ?>
+            </div>
+          </article>
+        <?php endwhile; ?>
+        <!-- end of the loop -->
 
-      <?php $i = 0; $c->total = $c->counter; ?>
-      <div class="col-sm-6 sm-heading content-right">
-      <?php while ( have_posts() ) : the_post(); if( $i <= $c->total + 2 ) : ?>
-        <?php if( $i > $c->total ) : ?>
-          <?php get_template_part( 'template-parts/post/content', 'left' ); ?>
-          <?php $c->counter++;?>
-        <?php endif; ?>
-        <?php $i++; ?>
-      <?php endif; endwhile; ?>
-      </div>
-    </div>
+        <!-- pagination here -->
+        <?php
+          if (function_exists(custom_pagination)) {
+            custom_pagination($custom_query->max_num_pages,"",$paged);
+          }
+        ?>
 
-    <div class="row top">
-      <?php $i = 0; $c->total = $c->counter; ?>
-      <?php while ( have_posts() ) : the_post(); if( $i <= $c->total + 3 ) : ?>
-        <?php if( $i > $c->total ) : ?>
-          <div class="col-sm-4 sm-heading">
-            <?php get_template_part( 'template-parts/post/content', 'default' ); ?>
-          </div>
-          <?php $c->counter++;?>
-        <?php endif; ?>
-        <?php $i++; ?>
-      <?php endif; endwhile; ?>
-    </div>    
-  <?php endif; ?>
+      <?php wp_reset_postdata(); ?>
+
+      <?php else:  ?>
+        <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+      <?php endif; ?>
+
 </div>
 <?php get_footer(); ?>

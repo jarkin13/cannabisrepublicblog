@@ -143,3 +143,26 @@ function cccpa_get_state( $post_id ) {
   $state = wp_get_post_categories( $post_id , $arr )[0];
   echo get_category( $state )->name;
 }
+
+add_filter('wp_trim_excerpt', function($text){    
+   $max_length = 210;
+
+   if(mb_strlen($text, 'UTF-8') > $max_length){
+     $split_pos = mb_strpos(wordwrap($text, $max_length), "\n", 0, 'UTF-8');
+     $text = mb_substr($text, 0, $split_pos, 'UTF-8');
+   }
+
+   return $text . '...';
+});
+
+add_action( 'pre_get_posts', 'wpse5477_pre_get_posts' );
+function wpse5477_pre_get_posts( $query )
+{
+    if ( ! $query->is_main_query() || $query->is_admin() )
+        return false; 
+
+    if ( $query->is_category() ) {
+        $query->set( 'posts_per_page', 10 );
+    }
+    return $query;
+}
