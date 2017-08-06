@@ -24,9 +24,7 @@
       </div>
     </div>
 
-    <hr class="black thick">
-      <?php wpbeginner_numeric_posts_nav(); ?>
-    <hr class="black thick">
+    <?php wpbeginner_numeric_posts_nav(); ?>
 
   <?php else : ?>
 
