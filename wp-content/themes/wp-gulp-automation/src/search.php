@@ -12,20 +12,22 @@
   </header><!-- .page-header -->
 
   <?php if ( have_posts() ) : ?>
-    <?php while ( have_posts() ) : the_post(); ?>
 
-      <div class="row">
-        <div id="post-content" class="col-sm-8 sm-heading content-left">
-          <?php while ( have_posts() ) : the_post();  ?>
-            <?php get_template_part( 'template-parts/post/content', 'right' ); ?>
-          <?php endwhile; ?>
-        </div>
-        <div id="most-popular-sidebar" class="col-md-4 pull-right">
-          <?php get_sidebar(); ?>
-        </div>
+    <div class="row">
+      <div id="post-content" class="col-sm-8 sm-heading content-left">
+        <?php while ( have_posts() ) : the_post();  ?>
+          <?php get_template_part( 'template-parts/post/content', 'right' ); ?>
+        <?php endwhile; ?>
       </div>
+      <div id="most-popular-sidebar" class="col-md-4 pull-right">
+        <?php get_sidebar(); ?>
+      </div>
+    </div>
 
-    <?php endwhile; ?>
+    <hr class="black thick">
+      <?php wpbeginner_numeric_posts_nav(); ?>
+    <hr class="black thick">
+
   <?php else : ?>
 
     <p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentyseventeen' ); ?></p>

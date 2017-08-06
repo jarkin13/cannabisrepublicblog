@@ -33,6 +33,21 @@
     }
   }
 
+  .post-navigation {
+    width: 100%;
+
+    ul {
+      list-style: none;
+      -webkit-padding-start: 0;
+      text-align: center;
+
+      li {
+        display: inline-block;
+        padding: 3px 15px;
+      }
+    }
+  }
+
   @media (min-width: 992px) {
     h1.title {
       font-size: 40px;
@@ -83,21 +98,6 @@
 
   .content-left .post-meta > h2,
   .content-right .post-meta > h2 { margin-top: 0; }
-
-  .post-navigation {
-    width: 100%;
-
-    ul {
-      list-style: none;
-      -webkit-padding-start: 0;
-      text-align: center;
-
-      li {
-        display: inline-block;
-        padding: 3px 15px;
-      }
-    }
-  }
 }
 
 #search {
