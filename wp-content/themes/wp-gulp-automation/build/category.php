@@ -12,7 +12,7 @@
         'total' => 0
       );
     ?>
-
+    
     <div class="row top">
 
       <div class="col-sm-6 md-heading">
@@ -50,7 +50,9 @@
       <?php endwhile; ?>
     </div>
 
+    <hr class="black thick">
     <?php wpbeginner_numeric_posts_nav(); ?>
+    <hr class="black thick">
 
   <?php else : ?>
     <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>

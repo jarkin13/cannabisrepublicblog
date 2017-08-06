@@ -242,17 +242,17 @@ function wpbeginner_numeric_posts_nav() {
     $links[] = $paged + 1;
   }
 
-  echo '<div class="navigation"><ul>' . "\n";
+  echo '<div class="post-navigation"><ul>' . "\n";
 
   /** Previous Post Link */
   if ( get_previous_posts_link() )
-    printf( '<li>%s</li>' . "\n", get_previous_posts_link() );
+    printf( '<li>%s</li>' . "\n", get_previous_posts_link( '<i class="fa fa-chevron-left" aria-hidden="true"></i>' ) );
 
   /** Link to first page, plus ellipses if necessary */
   if ( ! in_array( 1, $links ) ) {
     $class = 1 == $paged ? ' class="active"' : '';
 
-    printf( '<li%s><a href="la %s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+    printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
 
     if ( ! in_array( 2, $links ) )
       echo '<li>…</li>';
@@ -276,7 +276,8 @@ function wpbeginner_numeric_posts_nav() {
 
   /** Next Post Link */
   if ( get_next_posts_link() )
-    printf( '<li>%s</li>' . "\n", get_next_posts_link() );
+    //printf( '<a href="%s">' . __( 'next' ) . '</a>',  __( 'http://example.com' ) ); 
+    printf( '<li>%s</li>' . "\n", get_next_posts_link( '<i class="fa fa-chevron-right" aria-hidden="true"></i>') );
 
   echo '</ul></div>' . "\n";
 
