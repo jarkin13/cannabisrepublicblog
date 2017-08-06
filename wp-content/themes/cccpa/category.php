@@ -1,8 +1,13 @@
 <?php get_header(); ?>
+<?php global $post; ?>
+<?php require_once('inc/settings.php'); ?>
+<?php $categoryID = get_cat_ID( single_cat_title('', false) ); ?>
+<?php $currentCat = get_category( $categoryID ); ?>
 
 <div id="category" class="post-container container">
   <h1 class="title"><?php single_cat_title(); ?></h1>
   <hr class="black thick">
+  <?php $excludePostsIDs = ''; ?>
 
   <?php if ( have_posts() ) : ?>
     <?php 
@@ -20,6 +25,7 @@
             <?php if( $i->counter < 1 ) : ?>
               <?php get_template_part( 'template-parts/post/content', 'default' ); ?>
               <?php $i->counter++; ?>
+              <?php $excludePostsIDs .= $post->ID; ?>
             <?php endif; ?>
           <?php endwhile; ?>
         </div>
@@ -31,6 +37,7 @@
             <?php if( $reset > $i->total && $reset < $i->total + 3 ) : ?>
               <?php get_template_part( 'template-parts/post/content', 'left' ); ?>
               <?php $i->counter++; ?>
+              <?php $excludePostsIDs .= ', ' . $post->ID; ?>
             <?php endif; ?>
           <?php endwhile; ?>
         </div>
@@ -46,11 +53,12 @@
               <?php get_template_part( 'template-parts/post/content', 'default' ); ?>
             </div>
             <?php $i->counter++; ?>
+            <?php $excludePostsIDs .= ', ' . $post->ID; ?>
           <?php endif; ?>
         <?php endwhile; ?>
       </div>
     <?php else : ?>
-      <div class="row">
+      <div class="row paged-content">
         <div id="post-content" class="col-sm-8 sm-heading content-left">
           <?php while ( have_posts() ) : the_post();  ?>
             <?php get_template_part( 'template-parts/post/content', 'right' ); ?>
@@ -63,7 +71,7 @@
     <?php endif; ?>
     
     <?php wpbeginner_numeric_posts_nav(); ?>
-    
+  
   <?php else : ?>
     <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
   <?php endif; ?>
