@@ -13,7 +13,7 @@
 
   <?php if ( have_posts() ) : ?>
 
-    <div class="row">
+    <div class="row paged-content">
       <div id="post-content" class="col-sm-8 sm-heading content-left">
         <?php while ( have_posts() ) : the_post();  ?>
           <?php get_template_part( 'template-parts/post/content', 'right' ); ?>

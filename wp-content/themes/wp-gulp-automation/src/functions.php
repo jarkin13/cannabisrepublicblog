@@ -144,6 +144,16 @@ function cccpa_get_state( $post_id ) {
   echo get_category( $state )->name;
 }
 
+function cccpa_get_state_id( $post_id ) {
+  $arr = array( 
+    'parent' => get_cat_ID( 'states' ), 
+    'number' => 1
+  );
+  
+  $state = wp_get_post_categories( $post_id , $arr )[0];
+  return get_category( $state )->term_id;
+}
+
 add_filter('wp_trim_excerpt', function($text){    
    $max_length = 210;
 
