@@ -12,6 +12,7 @@
         'total' => 0
       );
     ?>
+hello
 
     <div class="row top">
 
@@ -50,7 +51,8 @@
       <?php endwhile; ?>
     </div>
 
-    <?php wpbeginner_numeric_posts_nav(); ?>
+    <div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
+    <div class="nav-next alignright"><?php previous_posts_link( 'Newer posts' ); ?></div>
 
   <?php else : ?>
     <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>

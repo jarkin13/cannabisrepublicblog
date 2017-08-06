@@ -34,6 +34,8 @@ header {
         a {
           padding-right: 25px;
           padding-left: 25px;
+
+          &:active, &:focus, &:hover, &:visited { color: #fff; }
         }
 
         &:hover,

@@ -2,6 +2,10 @@
 <?php get_header(); ?>
 <?php $mainCat = cccpa_get_main_category( $post->ID ); ?>
 <?php wpb_set_post_views($post->ID); ?>
+<?php $cats = get_the_category( $post->ID ); ?>
+<pre>
+  <?php var_dump( $cats ); ?>
+</pre>
 <div id="single" class="container">
   <?php while ( have_posts() ) : the_post(); ?>
     <div class="row">

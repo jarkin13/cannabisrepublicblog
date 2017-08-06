@@ -1,47 +1,66 @@
-<?php get_header(); ?>
-<div id="blogs" class="container">
-  
-    
+<?php
+/**
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package WordPress
+ * @subpackage Twenty_Seventeen
+ * @since 1.0
+ * @version 1.0
+ */
 
+get_header(); ?>
 
-    <?php 
+<div class="wrap">
+  <?php if ( is_home() && ! is_front_page() ) : ?>
+    <header class="page-header">
+      <h1 class="page-title"><?php single_post_title(); ?></h1>
+    </header>
+  <?php else : ?>
+  <header class="page-header">
+    <h2 class="page-title"><?php _e( 'Posts', 'twentyseventeen' ); ?></h2>
+  </header>
+  <?php endif; ?>
 
-      $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <?php
+      if ( have_posts() ) :
 
-      $custom_args = array(
-          'post_type' => 'post',
-          'posts_per_page' => 2,
-          'paged' => $paged
-        );
+        /* Start the Loop */
+        while ( have_posts() ) : the_post();
 
-      $custom_query = new WP_Query( $custom_args ); ?>
+          /*
+           * Include the Post-Format-specific template for the content.
+           * If you want to override this in a child theme, then include a file
+           * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+           */
+          echo $get_the_title( $post->ID );
 
-      <?php if ( $custom_query->have_posts() ) : ?>
-        <h1><?php echo $post->ID; ?></h1>
-    <hr class="black thick">
-        <!-- the loop -->
-        <?php while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
-          <article class="loop">
-            <h3><?php the_title(); ?></h3>
-            <div class="content">
-              <?php the_excerpt(); ?>
-            </div>
-          </article>
-        <?php endwhile; ?>
-        <!-- end of the loop -->
+        endwhile;
 
-        <!-- pagination here -->
-        <?php
-          if (function_exists(custom_pagination)) {
-            custom_pagination($custom_query->max_num_pages,"",$paged);
-          }
-        ?>
+        the_posts_pagination( array(
+          'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
+          'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
+          'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
+        ) );
 
-      <?php wp_reset_postdata(); ?>
+      else :
 
-      <?php else:  ?>
-        <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-      <?php endif; ?>
+        get_template_part( 'template-parts/post/content', 'none' );
 
-</div>
-<?php get_footer(); ?>
+      endif;
+      ?>
+
+    </main><!-- #main -->
+  </div><!-- #primary -->
+  <?php get_sidebar(); ?>
+</div><!-- .wrap -->
+
+<?php get_footer();

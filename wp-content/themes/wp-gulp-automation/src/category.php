@@ -1,89 +1,60 @@
 <?php get_header(); ?>
-<?php
-  $catname = wp_title('', false);
-  $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-  $query_args = array(
-    'post_type' => 'post',
-    'category_name' => $catname,
-    'paged' => $paged,
-    'page' => $paged
-  );
-?>
+
 <div id="category" class="container">
   <h1><?php single_cat_title(); ?></h1>
   <hr class="black thick">
-  
+
+  <?php if ( have_posts() ) : ?>
+    <?php 
+      $reset = 0;
+      $i = (object) array(
+        'counter' => 0,
+        'total' => 0
+      );
+    ?>
+
     <div class="row top">
 
-      <?php 
-      $exclude = []; $i = 0;
-      $query_args['posts_per_page'] = 1;
-      $the_query = new WP_Query( $query_args );
-      ?>
-
-      <?php if ( $the_query->have_posts() ) : ?>
-
-        <div class="col-sm-6 md-heading">
-          <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <div class="col-sm-6 md-heading">
+        <?php while ( have_posts() ) : the_post();  ?>
+          <?php if( $i->counter < 1 ) : ?>
             <?php get_template_part( 'template-parts/post/content', 'default' ); ?>
-            <?php $exclude[$i] = $post->ID; ?>
-            <?php $i++; ?>
-          <?php endwhile; wp_reset_postdata(); ?>
-        </div>
+            <?php $i->counter++; ?>
+          <?php endif; ?>
+        <?php endwhile; ?>
+      </div>
 
-      <?php endif; ?>
-
-      <?php 
-      $query_args['posts_per_page'] = 2;
-      $query_args['post__not_in'] = $exclude;
-      $the_query = new WP_Query( $query_args );
-      ?>
-
-      <?php if ( $the_query->have_posts() ) : ?>
-
-        <div class="col-sm-6 sm-heading content-right">
-          <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <?php $i->total = $i->counter; ?>
+      <div class="col-sm-6 sm-heading content-right">
+        <?php while ( have_posts() ) : the_post();  ?>
+          <?php $reset++; ?>
+          <?php if( $reset > $i->total && $reset < $i->total + 3 ) : ?>
             <?php get_template_part( 'template-parts/post/content', 'left' ); ?>
-            <?php $exclude[$i] = $post->ID; ?>
-            <?php $i++; ?>
-          <?php endwhile; wp_reset_postdata(); ?>
-        </div>
-
-      <?php endif; ?>
+            <?php $i->counter++; ?>
+          <?php endif; ?>
+        <?php endwhile; ?>
+      </div>
 
     </div>
+
+    <?php $i->total = $i->counter; $reset = 0;?>
     <div class="row top">
-
-      <?php 
-      $query_args['posts_per_page'] = 3;
-      $query_args['post__not_in'] = $exclude;
-      $the_query = new WP_Query( $query_args );
-      ?>
-
-      <?php if ( $the_query->have_posts() ) : ?>
-
-        <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <?php while ( have_posts() ) : the_post();  ?>
+        <?php $reset++; ?>
+        <?php if( $reset > $i->total && $reset < $i->total + 4 ) : ?>
           <div class="col-sm-4 sm-heading">
             <?php get_template_part( 'template-parts/post/content', 'default' ); ?>
           </div>
-        <?php endwhile; ?>
-
-        <?php if ( $the_query->max_num_pages > 1 ) { // check if the max number of pages is greater than 1  ?>
-          <nav class="prev-next-posts">
-            <div class="prev-posts-link">
-              <?php echo get_next_posts_link( 'Older Entries', $the_query->max_num_pages ); // display older posts link ?>
-            </div>
-            <div class="next-posts-link">
-              <?php echo get_previous_posts_link( 'Newer Entries' ); // display newer posts link ?>
-            </div>
-          </nav>
-        <?php } ?>
-
-        <?php wp_reset_postdata(); ?>
-
-      <?php endif; ?>
-
+          <?php $i->counter++; ?>
+        <?php endif; ?>
+      <?php endwhile; ?>
     </div>
 
+    <?php wpbeginner_numeric_posts_nav(); ?>
+
+  <?php else : ?>
+    <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+  <?php endif; ?>
+
 </div>
-<?php get_footer(); ?>
+<?php get_footer();
