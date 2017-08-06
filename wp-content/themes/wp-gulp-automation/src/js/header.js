@@ -3,10 +3,16 @@
 // A simple wrapper for all your custom jQuery that belongs in the header
 ;(function($){
   $(function(){
-    if( $('#single').val() !== undefined ) {
+    if( $('#most-popular-sidebar').val() !== undefined ) {
+      $(window).resize(function() {
+        $('#most-popular-sidebar').height($('#post-content').height() - $('#most-popular-sidebar').offset().top);
+      });
+      $(window).resize();
+    }
+
+    if( $('#share-sidebar').val() !== undefined ) {
       $(window).resize(function() {
         $('#share-sidebar').height($('#post-content').height() - $('#share-sidebar').offset().top);
-        $('#most-popular-sidebar').height($('#post-content').height() - $('#most-popular-sidebar').offset().top);
       });
       $(window).resize();
     }

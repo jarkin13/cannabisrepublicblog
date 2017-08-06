@@ -1,28 +1,15 @@
-#single {
-  font-size: 17px;
-  line-height: 28px;
-
-  h1, .sidebar-title {
+.post-container {
+  h1.title {
     font-family: 'Old Standard TT', serif;
     font-weight: 700;
     text-transform: uppercase;
     margin: 0;
-  }
-
-  h1 {
     font-size: 30px;
-  }
-
-  .sidebar-title {
-    padding: 15px 0 0;
-    font-size: 35px;
-    border-top: 10px solid #000;
   }
 
   .post-meta {
     list-style: none;
     -webkit-padding-start: 0;
-    margin-left: -10px;
     display: inline-block;
     text-transform: uppercase;
 
@@ -44,39 +31,25 @@
     }
   }
 
-  .sidebar {
-    margin-top: 3px;
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -o-sticky;
-    position: -ms-sticky;
-    position: sticky;
-    top: 0;
-
-    &.share {
-      .post-meta p { padding-top: 14px; }
-    }
-
-    img {
-      margin-top: 10px;
-    }
-
-    .sidebar-post-content {
-      padding-left: 10px;
-    }
-
-    .sidebar-post-image {
-      padding-right: 5px;
+  @media (min-width: 992px) {
+    h1.title {
+      font-size: 40px;
     }
   }
+}
+
+#single {
+  font-size: 17px;
+  line-height: 28px;
 
   &.page {
     .category { margin-right: 20px; }
   }
 
+  header .post-meta { margin-left: -10px; }
+
   @media (min-width: 992px) {
     h1 {
-      font-size: 40px;
       margin-bottom: 50px;
     }
 
@@ -95,39 +68,17 @@
     .col-md-4 {
       width: 28.33333%;
     }
-
-    .sidebar {
-      .row {
-        margin-bottom: 0; 
-
-        .border {
-          padding-bottom: 20px;
-        }
-
-        i {
-          font-size: 40px;
-        }
-
-        .facebook i { color: #3b5998; }
-        .twitter i { color: #1da1f2; }
-      }
-
-      .post-meta {
-        margin-left: 0;
-        font-size: .6em;
-      }
-
-      h4 { 
-        margin: 2px 0;
-        font-size: .84333em;
-      }
-    }
   }
 }
 
 #category {
+  font-size: 17px;
+  line-height: 28px;
+
   hr { margin-bottom: 20px; }
   .top { margin-top: 40px; }
+
+  .content-left .post-meta > h2,
   .content-right .post-meta > h2 { margin-top: 0; }
 
   .post-navigation {
@@ -144,4 +95,6 @@
       }
     }
   }
+
+  .sidebar .sidebar-title { border-top: none; }
 }
