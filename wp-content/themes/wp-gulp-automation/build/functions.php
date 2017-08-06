@@ -242,6 +242,7 @@ function wpbeginner_numeric_posts_nav() {
     $links[] = $paged + 1;
   }
 
+  echo '<hr class="black thick">';
   echo '<div class="post-navigation"><ul>' . "\n";
 
   /** Previous Post Link */
@@ -280,5 +281,6 @@ function wpbeginner_numeric_posts_nav() {
     printf( '<li>%s</li>' . "\n", get_next_posts_link( '<i class="fa fa-chevron-right" aria-hidden="true"></i>') );
 
   echo '</ul></div>' . "\n";
+  echo '<hr class="black thick">';
 
 }

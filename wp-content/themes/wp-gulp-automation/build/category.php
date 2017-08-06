@@ -61,9 +61,9 @@
         </div>
       </div>
     <?php endif; ?>
-    <hr class="black thick">
-      <?php wpbeginner_numeric_posts_nav(); ?>
-      <hr class="black thick">
+    
+    <?php wpbeginner_numeric_posts_nav(); ?>
+    
   <?php else : ?>
     <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
   <?php endif; ?>
