@@ -2,22 +2,26 @@
 <?php get_header(); ?>
 <?php $mainCat = cccpa_get_main_category( $post->ID ); ?>
 <?php wpb_set_post_views($post->ID); ?>
-<div id="single" class="container">
+<?php $cats = get_the_category( $post->ID ); ?>
+
+<div id="single" class="post-container container">
   <?php while ( have_posts() ) : the_post(); ?>
     <div class="row">
       <div id="share-sidebar" class="col-xs-2 col-sm-2 rd rd-no-mobile">
         <?php get_template_part( 'template-parts/post/content', 'share' ); ?>
       </div> 
       <div id="post-content" class="col-xs-12 col-sm-12 col-md-6">
-        <ul class="post-meta">
-          <li>
-            <a href="<?php echo get_category_link( $mainCat ) ;?>" class="category" alt="<?php echo get_category( $mainCat )->name;?>">
-              <?php echo get_category( $mainCat )->name;?>
-            </a>
-          </li>
-          <li><?php the_date(); ?></li>
-        </ul>
-        <h1><?php echo get_the_title(); ?></h1>
+        <header>
+          <ul class="post-meta">
+            <li>
+              <a href="<?php echo get_category_link( $mainCat ) ;?>" class="category" alt="<?php echo get_category( $mainCat )->name;?>">
+                <?php echo get_category( $mainCat )->name;?>
+              </a>
+            </li>
+            <li><?php the_date(); ?></li>
+          </ul>
+          <h1 class="title"><?php echo get_the_title(); ?></h1>
+        </header>
         <img src="<?php echo get_the_post_thumbnail_url( $post->ID ) ?>" alt="<?php echo get_the_title(); ?>" class="post-image">
         <div class="row">
           <div class="col-xs-2 col-sm-2 rd rd-mobile">
