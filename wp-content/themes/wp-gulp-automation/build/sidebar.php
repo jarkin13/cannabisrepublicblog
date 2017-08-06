@@ -1,4 +1,4 @@
-<section class="sidebar most-popular sticky rd rd-no-mobile">
+<section class="sidebar most-popular rd rd-no-mobile">
   <div class="sidebar-title">Most Popular</div>
   <?php 
   $popularpost = new WP_Query( 

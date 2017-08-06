@@ -74,8 +74,8 @@ a.btn,
   }
 }
 
-*:focus{
-    outline: none;
+*:focus, input:focus {
+  outline: none;
 } 
 
 hr {
@@ -88,11 +88,4 @@ hr {
   &.thick {
     border-top-width: 4px;
   }
-}
-
-.sticky {
-   position: -moz-sticky;
-      position: -o-sticky;
-      position: -ms-sticky;
-      position: sticky;
 }

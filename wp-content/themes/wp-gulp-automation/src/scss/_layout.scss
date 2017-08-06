@@ -25,9 +25,14 @@ h1 {
   font-size: 28px;
 }
 
-.sm-heading h1 {
-  font-size: 22px;
-  color: #222;
+.sm-heading {
+  font-size: 14px;
+  line-height: 20px; 
+
+  h1 {
+    font-size: 22px;
+    color: #222;
+  }
 }
 
 h2 {
@@ -92,7 +97,6 @@ h4 {
     margin: 0;
     padding: 15px 0 0;
     font-size: 35px;
-    border-top: 10px solid #000;
   }
 
   img {
@@ -148,6 +152,38 @@ h4 {
 
     &.rd-mobile {
       display: none;
+    }
+  }
+}
+
+.widget_search {
+  .form-inline {
+    position: relative;
+
+    .form-group {
+      width: 100%;
+
+      input[type='search'] {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid #000;
+        border-radius: 0;
+        box-shadow: none;
+
+        @include input-placeholder {
+          text-transform: lowercase;
+          font-size: 16px;
+          letter-spacing: 2px;
+        }
+      }
+    }
+
+    .search-submit {
+      background: transparent;
+      border: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 }

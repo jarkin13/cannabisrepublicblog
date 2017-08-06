@@ -1,4 +1,7 @@
 .post-container {
+  font-size: 17px;
+  line-height: 28px;
+
   h1.title {
     font-family: 'Old Standard TT', serif;
     font-weight: 700;
@@ -10,7 +13,6 @@
   .post-meta {
     list-style: none;
     -webkit-padding-start: 0;
-    display: inline-block;
     text-transform: uppercase;
 
     > li {
@@ -39,14 +41,18 @@
 }
 
 #single {
-  font-size: 17px;
-  line-height: 28px;
-
   &.page {
     .category { margin-right: 20px; }
   }
 
-  header .post-meta { margin-left: -10px; }
+  header {
+    .post-meta { 
+      display: inline-block;
+      margin-left: -10px; 
+    }
+  }
+
+  .sidebar-title { border-top: 10px solid #000; }
 
   @media (min-width: 992px) {
     h1 {
@@ -72,9 +78,6 @@
 }
 
 #category {
-  font-size: 17px;
-  line-height: 28px;
-
   hr { margin-bottom: 20px; }
   .top { margin-top: 40px; }
 
@@ -95,6 +98,8 @@
       }
     }
   }
+}
 
-  .sidebar .sidebar-title { border-top: none; }
+#search {
+  hr { margin-bottom: 20px; }
 }
