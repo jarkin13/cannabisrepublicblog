@@ -48,8 +48,6 @@ module.exports = {
     chunks: { // Chunks are arrays of paths or globs matching a set of source files; this way you can organize a bunch of scripts that go together into pieces that can then be bundled (above)
       // The core footer chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here
       footer: [
-        modules+'timeago/jquery.timeago.js', // The modules directory contains packages downloaded via npm
-        src+'js/responsive-menu.js',
         src+'js/footer.js'
       ],
       header: [
@@ -59,10 +57,6 @@ module.exports = {
       // The pageloader chunk provides an example of how you would add a user-configurable feature to your theme; you can delete this if you wish
       // Have a look at the `src/inc/assets.php` to see how script bundles could be conditionally loaded by a theme
       pageloader: [
-        modules+'html5-history-api/history.js',
-        modules+'spin.js/spin.js',
-        modules+'spin.js/jquery.spin.js',
-        modules+'wp-ajax-page-loader/wp-ajax-page-loader.js',
         src+'js/page-loader.js'
       ]
     },
